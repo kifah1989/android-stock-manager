@@ -2,7 +2,7 @@
 include 'connection.php';
 
 
-$query = mysqli_query($con, "SELECT * FROM products_table, category, supplier where products_table.category_id = category.category_id and products_table.Supplier_Id = supplier.Supplier_id ");
+$query = mysqli_query($con, "SELECT * FROM products_table");
 $data = array();
 $qry_array = array();
 $i = 0;
@@ -10,8 +10,8 @@ $total = mysqli_num_rows($query);
 while ($row = mysqli_fetch_array($query)) {
   $data['Barcode'] = $row['ProductCode'];
   $data['Pname'] = $row['Product_Name'];
-  $data['Supplier'] = $row['supname'];
-  $data['Category'] = $row['categoryname'];
+  $data['Supplier'] = $row['Supplier_Id'];
+  $data['Category'] = $row['category_id'];
   $data['Quantity'] = $row['Quantity'];
   $data['OriginalPrice'] = $row['Original_price'];
   $data['SellingPrice'] = $row['Selling_price'];
